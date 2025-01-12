@@ -1,0 +1,18 @@
+.menu-bar>ul>.nav-link::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    border-radius: 2px;
+    background: #EFA687;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+  }
+
+  .menu-bar>ul>.nav-link:hover::after {
+    width: 100%;
+  }
+
+  .menu-bar>ul>.active::after {
+    width: 100%;
+  }

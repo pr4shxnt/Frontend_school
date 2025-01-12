@@ -1,0 +1,7 @@
+.list{
+    columns: 300px;
+}
+
+.child{
+    width: 100%;
+}
