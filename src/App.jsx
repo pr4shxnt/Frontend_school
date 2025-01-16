@@ -22,6 +22,8 @@ import AdminStudents from "./Admin/AdminStudents";
 import StudentCardAccess from "./Components/StudentCardAccess";
 import BlogCreator from "./Pages/BlogCreator";
 import ReviewedBlogs from "./Admin/reviewedBlogs";
+import PendingBlog from "./Admin/pendingBlogs";
+import Blogs from "./Pages/Blogs";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -50,8 +52,12 @@ export default function App() {
             element: <StudentCardAccess/>
         },
         {
-            path: "blogs",
+            path: "blogs/create-new",
             element: <BlogCreator/>,
+        },
+        {
+            path: "blogs",
+            element: <Blogs/>,
         }
 
       ],
@@ -62,10 +68,7 @@ export default function App() {
       children: [
         {
             path: "", // Admin panel route
-            element: <Dashboard/>,
-            children: [
-              // Add admin routes here...
-            ]
+            element: <Dashboard/>
 
         },
     {
@@ -96,6 +99,10 @@ export default function App() {
       {
         path: "blogs/reviewed",
         element: <ReviewedBlogs/>
+      },
+      {
+        path: "blogs/pending",
+        element: <PendingBlog/>,
       }
 
 

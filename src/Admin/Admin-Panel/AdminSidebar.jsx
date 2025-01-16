@@ -184,7 +184,7 @@ const AdminSidebar = ({ isToggled, setIsToggled }) => {
 
         <NavLink
           className="sidecomp hover:bg-[#EB8F41] hover:bg-opacity-80 hover:text-white rounded-lg transition-all"
-          to="newsletters"
+          to="blogs/reviewed"
         >
           <li
             className={`flex items-center space-x-4  py-3 cursor-pointer  ${
@@ -192,10 +192,22 @@ const AdminSidebar = ({ isToggled, setIsToggled }) => {
             }`}
           >
             <Newspaper />
-            {!isMinimized && <span>Newsletter request</span>}
+            {!isMinimized && <span>Reviewed Blogs</span>}
           </li>
         </NavLink>
-
+        <NavLink
+          className="sidecomp hover:bg-[#EB8F41] hover:bg-opacity-80 hover:text-white rounded-lg transition-all"
+          to="blogs/pending"
+        >
+          <li
+            className={`flex items-center space-x-4  py-3 cursor-pointer  ${
+              isMinimized ? "justify-center flex" : "px-5"
+            }`}
+          >
+            <Newspaper />
+            {!isMinimized && <span>Pending Blogs</span>}
+          </li>
+        </NavLink>
         <NavLink
           className="sidecomp hover:bg-[#EB8F41] hover:bg-opacity-80 hover:text-white rounded-lg transition-all"
           to="testimonials"
