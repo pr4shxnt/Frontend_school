@@ -28,7 +28,7 @@ const Blogs = () => {
 
   return (
     <div className='pt-28 px-4 md:px-16 md:pt-4'>
-        <div className="flex justify-between">
+        <div className="flex flex-col md:flex-row gap-4 justify-between">
 <div className="">
     <h1 className='header_default'>Blog Posts</h1>
     <p className="subtitle_default">Check out our blog posts </p>
@@ -53,7 +53,7 @@ const Blogs = () => {
                 />
 
                 {/* Overlay with Red Background */}
-                <div className="absolute inset-0 bg-red-600 opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex flex-col justify-end items-center">
+                <div className="absolute inset-0 bg-orange-600 opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex flex-col justify-end items-center">
                   {/* Sliding Text */}
                   <div className="transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex flex-col justify-center items-center p-6">
                     <h2 className="text-xl text-white font-bold mb-2">{`${blog.title.slice(0,30)}....`}</h2>

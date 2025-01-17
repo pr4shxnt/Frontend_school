@@ -144,7 +144,7 @@ const AdminEvents = () => {
                         className="bg-white shadow-lg rounded-lg p-4 hover:shadow-xl transition"
                     >
                         <h3 className="text-xl font-semibold text-gray-900">{event.title}</h3>
-                        <p className="text-gray-700 mt-2">{event.description}</p>
+                        <p className="text-gray-700 mt-2">{event.description.slice(0,200)+"..."}</p>
                         <p className="text-gray-600 mt-2">
                             Date: {new Date(event.date).toLocaleDateString("en-CA")}
                         </p>

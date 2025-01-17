@@ -24,6 +24,7 @@ import BlogCreator from "./Pages/BlogCreator";
 import ReviewedBlogs from "./Admin/reviewedBlogs";
 import PendingBlog from "./Admin/pendingBlogs";
 import Blogs from "./Pages/Blogs";
+import IndividualBlogs from "./Pages/IndividualBlogs";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -58,6 +59,10 @@ export default function App() {
         {
             path: "blogs",
             element: <Blogs/>,
+        },
+        {
+            path: "blogs/:_id",
+            element: <IndividualBlogs/>
         }
 
       ],

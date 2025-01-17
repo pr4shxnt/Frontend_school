@@ -5,6 +5,7 @@ import { EventsClient } from "./EventsClient";
 import { CampusLifePage } from "./CampusLife";
 import StudentCardAccess from "../Components/StudentCardAccess";
 import HomeStaffs from "../Components/HomeStaffs";
+import Blog from "../Components/Blog";
 
 const Home = () => {
   return (
@@ -12,8 +13,9 @@ const Home = () => {
       <ImageSlider />
       <WhyUs />
       <CampusLifePage />
-      <EventsClient />
-      <HomeStaffs/>
+      <EventsClient /><HomeStaffs/>
+      <Blog/>
+
     </div>
   );
 };

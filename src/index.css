@@ -83,7 +83,7 @@ element {
     font-size: 1.05rem;
     font-weight: 300;
     margin-top: 10px;
-    text-align: start;
+
   }
 
   @media (max-width: 768px){
@@ -98,7 +98,7 @@ element {
    }
 
    .subtitle_default{
-    font-size: 0.75rem;
-    line-height: 1.05rem;
+    font-size: 1rem;
+    line-height: 1.25rem;
    }
   }

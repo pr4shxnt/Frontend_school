@@ -9,7 +9,9 @@ export default function AdminDashboard() {
     const [events, setEvents] = useState([]);
     const [admin, setAdmin] = useState([]);
     const [students, setStudents] = useState([]);
-
+    const [blogs, setBlogs] = useState([]);
+    const [pending, setPending] = useState([]);
+    const [reviewedBlogs, setReviewedBlogs] = useState([]);
     useEffect(() => {
         const fetchStaff = async () => {
             try {
@@ -21,6 +23,33 @@ export default function AdminDashboard() {
         };
 
         fetchStaff();
+    }, []);
+
+    useEffect(() => {
+        const fetchRBlogs = async () => {
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/blogs/reviewed`);
+                setReviewedBlogs(response.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchRBlogs();
+    }, []);
+
+
+    useEffect(() => {
+        const blogsFetch = async () => {
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/blogs`);
+                setBlogs(response.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        blogsFetch();
     }, []);
 
     useEffect(() => {
@@ -81,12 +110,26 @@ export default function AdminDashboard() {
     fetchStudents();
     }, [])
 
+    useEffect(() => {
+        const pending = async () => {
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/blogs/pending`);
+                setPending(response.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        pending();
+    }, []);
+
     const studentCount = students.length;
     const eventCount = events.length;
-
+    const reviewedBlogCount = reviewedBlogs.length; // This will log the count every time the state updates
     const adminCount = admin.length;
-
+    const blogCount = blogs.length; // This will log the count every time the state updates
     const staffCount = staff.length;
+    const pendingCount = pending.length;
     console.log(staffCount); // This will log the count every time the state updates
 
     const galleryCount = gallery.length;
@@ -127,6 +170,26 @@ export default function AdminDashboard() {
                     icon={<Users />}
                     trend="up"
                 />
+
+                <Card
+                    title="Reviewed Blogs"
+                    value={reviewedBlogCount} // Displaying the staff count dynamically
+                    icon={<Users />}
+                    trend="up"
+                />
+                <Card
+                    title="Total Blogs"
+                    value={blogCount} // Displaying the staff count dynamically
+                    icon={<Users />}
+                    trend="up"
+                />
+                <Card
+                    title="Pending Blogs"
+                    value={pendingCount} // Displaying the staff count dynamically
+                    icon={<Users />}
+                    trend="up"
+                    />
+
             </div>
         </div>
     );

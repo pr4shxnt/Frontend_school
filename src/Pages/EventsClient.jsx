@@ -6,7 +6,7 @@ export function EventsClient() {
   const [events, setEvents] = useState([])
 
 
-  useEffect(() => {
+
     const fetchData = async () => {
         try {
           const response = await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/events`);
@@ -16,9 +16,9 @@ export function EventsClient() {
         }
       };
 
-      fetchData();
+   useEffect(() => {   fetchData();
 
-  })
+  }, [])
 
   console.log(events);
 
