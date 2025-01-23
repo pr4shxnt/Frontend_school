@@ -27,13 +27,13 @@ export function CampusLifePage() {
   ];
 
   return (
-    <div className="bg-white default_m">
+    <div className="  default_m">
       <div className="">
       <div className="  text-center w-full mb-8">
           <h1 className="header_default">
             Campus <span className="text-[#EB8F41]"> Life</span>
           </h1>
-          <p className="subtitle_default">
+          <p className="subtitle_default text-start">
             Experience a vibrant community where learning extends beyond the classroom.
 
           </p>

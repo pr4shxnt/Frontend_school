@@ -54,9 +54,9 @@ const WhyUs = () => {
   return (
     <div className="default_m mt-10 px-4">
       {/* Header Section */}
-      <div className="text-center mb-8 w-full">
+      <div className="  mb-8 w-full">
         <h1 className="header_default">Why <span className="text-[#EB8F41]"> PGS ?</span> </h1>
-        <p className="subtitle_default ">
+        <p className="subtitle_default text-start">
           Discover what makes our school unique and a great place for your
           child’s education.
         </p>

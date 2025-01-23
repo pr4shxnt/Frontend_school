@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.container{
+    margin: auto;
+}
+
 body{
     font-family: "poppins";
 }
@@ -83,7 +88,6 @@ element {
     font-size: 1.05rem;
     font-weight: 300;
     margin-top: 10px;
-
   }
 
   @media (max-width: 768px){
@@ -101,4 +105,11 @@ element {
     font-size: 1rem;
     line-height: 1.25rem;
    }
+  }
+
+  .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
   }

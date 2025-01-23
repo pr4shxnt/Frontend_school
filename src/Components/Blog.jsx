@@ -10,7 +10,7 @@ const Blog = () => {
       const response = await axios.get(
         `${import.meta.env.VITE_BACKEND_API_URI}/api/blogs/reviewed`
       );
-      // Sort blogs by createdAt in descending order (newest first)
+
       const sortedData = response.data.sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
@@ -24,7 +24,10 @@ const Blog = () => {
     fetchData();
   }, []);
 
-  const blog = blogData[0]; // Get the latest blog (sorted by createdAt)
+  const blog = blogData[0];
+console.log(blogData);
+
+
 
   return (
     <div className=" ">
@@ -45,13 +48,14 @@ const Blog = () => {
             <div className="absolute inset-0 bg-black opacity-70 "></div>
 
             {/* Blog Content */}
-            <div className="relative   text-white text-center default_m z-10">
-              <h2 className="header_default pt-8">{blog.title}</h2>
+            <div className="    text-white text-center default_m z-10">
+              <h2 className="font-bold text-start text-xl md:text-4xl pt-8">{blog.title}</h2>
 
-              <p className="subtitle_default hidden md:block">{blog.content.slice(0,1300)+`...`} <NavLink className="text-orange-500 hover:underline" to={`/blogs/${blog._id}`}>Read More</NavLink> </p>
-              <p className="subtitle_default text-gray-400 md:hidden">{blog.content.slice(0,300)+`...`} <NavLink className="text-orange-500 hover:underline" to={`/blogs/${blog._id}`}>Read More</NavLink> </p>
-              <p className="text-lg flex flex-col md:flex-row gap-3 justify-center w-full mb-4">
-                <div className='text-orange-500  '>Author:</div> {blog.author}
+              <p className="mt-2 text-md text-justify text-gray-300 leading-5 hidden md:block">{blog.content.slice(0,1490)+`...`} <NavLink className="text-orange-500 hover:underline" to={`/blogs/${blog._id}`}>Read More</NavLink> </p>
+              <p className="subtitle_default text-justify text-xs text-gray-400 md:hidden">{blog.content.slice(0,300)+`...`} <NavLink className="text-orange-500 hover:underline" to={`/blogs/${blog._id}`}>Read More</NavLink> </p>
+              <p className="text-lg flex flex-col md:flex-row gap-3 justify-center w-full -4">
+                <div className="md:absolute mt-4 md:mt-0 md:flex md:gap-3 bottom-2">
+                <div className='text-orange-500  '>Author:</div> {blog.author}</div>
               </p>
             </div>
           </div>

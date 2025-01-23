@@ -9,7 +9,7 @@ import Blog from "../Components/Blog";
 
 const Home = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen container bg-gradient-to-b from-gray-100 to-white">
       <ImageSlider />
       <WhyUs />
       <CampusLifePage />

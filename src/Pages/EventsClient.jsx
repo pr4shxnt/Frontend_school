@@ -26,13 +26,13 @@ export function EventsClient() {
   return (
     <div className="">
     { events.length > 0 ?
-    <div className="bg-white">
+    <div className=" ">
       <div className=" default_m lg:px-">
         <div className="mx-auto mb-8 text-start w-full lg:mx-0">
           <h1 className="header_default ">
             Upcoming <span className="text-[#EB8F41]"> Events</span>
           </h1>
-          <p className="mt-3 subtitle_default">
+          <p className="mt-3 text-start subtitle_default">
             Stay updated with the latest happenings, achievements, and announcements from our
             school community.
           </p>

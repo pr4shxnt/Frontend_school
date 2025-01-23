@@ -44,12 +44,12 @@ const Navbar = () => {
 
   return (
     <div
-      className={`navbar ${navFixed? "fixed " : "fixed md:relative"} w-full z-50 shadow-lg transition-transform duration-300
+      className={`navbar  ${navFixed? "fixed " : "fixed md:relative container"} w-full z-50 shadow-lg transition-transform duration-300
         `}
     >
 
       <div
-        className={`px-1 lg:px-20 flex justify-between items-center text-gray-500 w-screen ${
+        className={`px-1 lg:px-20  flex justify-between items-center text-gray-500 w-full ${
           isScrolled && navFixed ? "md:h-14 bg-gray-200 md:py-8 h-20 py-12" : "h-20 bg-gray-100 py-12 "
         } transition-all duration-300 `}
       >

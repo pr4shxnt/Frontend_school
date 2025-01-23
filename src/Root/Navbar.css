@@ -16,3 +16,8 @@
   .menu-bar>ul>.active::after {
     width: 100%;
   }
+
+  .navbar.fixed .container {
+    max-width: 1200px; /* Adjust based on your desired layout */
+    margin: 0 auto;    /* Centers the container */
+  }
