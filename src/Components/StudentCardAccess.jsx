@@ -69,7 +69,7 @@ const StudentCardAccess = () => {
       {isModalOpen && studentData && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-lg ">
-            <h3 className="header_default">Tero  <span className="text-orange-500">Bau ko </span>School</h3>
+            <h3 className="header_default">Pranami  <span className="text-orange-500">Global  </span>School </h3>
             <h2 className="mt-1 text-center">Student Identity Card (Digital)</h2>
 
             <div className="mt-6 flex flex-col">
