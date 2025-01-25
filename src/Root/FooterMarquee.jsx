@@ -2,7 +2,7 @@ import React from 'react'
 
 const FooterMarquee = () => {
   return (
-    <div>FooterMarquee</div>
+ <div className=""></div>
   )
 }
 

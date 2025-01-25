@@ -30,7 +30,7 @@ console.log(blogData);
 
 
   return (
-    <div className=" ">
+    <div className="mb-10">
 
       <div className="blog-container">
         {blog ? (

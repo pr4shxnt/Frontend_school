@@ -27,23 +27,33 @@ const Blogs = () => {
 
 
   return (
-    <div className='pt-28 px-4 md:px-16 md:pt-4'>
-        <div className="flex flex-col md:flex-row gap-4 justify-between">
-<div className="">
-    <h1 className='header_default'>Blog Posts</h1>
-    <p className="subtitle_default">Check out our blog posts </p>
-</div>
-<div className="flex gap-2 items-end">
-    Want your own article? <NavLink to="/blogs/create-new" className="text-purple-500 hover:underline cursor-pointer"> Create blog.</NavLink>
-</div>
-</div>
-<div className="grid grid-cols-1 gap-5 mb-10 md:grid-cols-2 lg:grid-cols-3 mt-5">
+    <div className='pt-28 md:pt-0'>
+        <header className=" shadow-sm">
+        <div className=" mx-auto ">
+        <div className="relative  rounded-xl shadow-md">
+            <div className="absolute bg-black opacity-50 h-full w-full z-10">
+
+            </div>
+              <img
+                src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1920"
+                alt="About us"
+                className="w-full h-96 object-cover rounded-lg"
+              />
+              <div className="absolute z-20 top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]">
+              <h1 className="text-5xl font-bold text-center text-gray-100">Recent Blogs and Posts</h1>
+              <p className="mt-2 text-lg text-center text-gray-300">Do you want your own article to be published in this page? <NavLink>Create a blog</NavLink></p>
+              </div>
+            </div>
+
+        </div>
+      </header>
+<div className="default_m grid grid-cols-1 gap-5 mb-10 md:grid-cols-2 lg:grid-cols-3 mt-5">
     {
         blogs.length > 0? (
             blogs.map((blog) => (
                 <div
                 key={blog._id}
-                className="relative cursor-pointer group flex flex-col items-center bg-gray-100 overflow-hidden rounded-lg shadow-lg"
+                className="relative cursor-pointer group flex flex-col items-center bg-gray-100 overflow-hidden   shadow-lg"
               >
                 {/* Blog Image */}
                 <img
@@ -53,11 +63,11 @@ const Blogs = () => {
                 />
 
                 {/* Overlay with Red Background */}
-                <div className="absolute inset-0 bg-orange-600 opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex flex-col justify-end items-center">
+                <div className="absolute bg-opacity-10 inset-0 bg-gradient-to-t from-orange-500 to-orange-300 opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex flex-col justify-end items-center">
                   {/* Sliding Text */}
-                  <div className="transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex flex-col justify-center items-center p-6">
-                    <h2 className="text-xl text-white font-bold mb-2">{`${blog.title.slice(0,30)}....`}</h2>
-                    <p className="text-gray-200 text-sm mb-4">{blog.description}</p>
+                  <div className="transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 h-full pt-20 flex flex-col justify-center items-center p-6">
+                    <h2 className="text-xl text-white font-bold ">{`${blog.title.slice(0,30)}....`}</h2>
+                    <p className="text-gray-200 text-sm">{blog.content.slice(0,30)}</p>
                     <a
                       href={`/blogs/${blog._id}`}
                       className="  text-white px-4 py-2   "

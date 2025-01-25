@@ -137,7 +137,7 @@ export default function AdminDashboard() {
     return (
         <div className="space-y-6 w-full">
             <h1 className="text-3xl font-semibold text-center">Dashboard</h1>
-            <div className="flex flex-wrap justify-center w-full gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 justify-center w-full gap-5">
                 <Card
                     title="Staff Members"
                     value={staffCount} // Displaying the staff count dynamically
