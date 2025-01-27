@@ -42,10 +42,10 @@ const Footer = () => {
           <div className="">
             <h1 className='text-xl md:text-2xl font-bold mb-1'>Redirect </h1>
             <ul>
-               <NavLink> <li className="text-xs md:text-sm hover:underline cursor-pointer hover:underline">Access student-card</li></NavLink>
-               <NavLink>              <li className="text-xs md:text-sm hover:underline cursor-pointer hover:underline">PyQs</li>
+               <NavLink> <li className="text-xs md:text-sm   cursor-pointer hover:underline">Access student-card</li></NavLink>
+               <NavLink>              <li className="text-xs md:text-sm   cursor-pointer hover:underline">PyQs</li>
 </NavLink>
-               <NavLink>              <li className="text-xs md:text-sm hover:underline cursor-pointer hover:underline">Khijda Mandir</li>
+               <NavLink>              <li className="text-xs md:text-sm   cursor-pointer hover:underline">Khijda Mandir</li>
 </NavLink>
              
             </ul>

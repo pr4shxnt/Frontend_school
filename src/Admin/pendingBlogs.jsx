@@ -17,17 +17,17 @@ const PendingBlogs = () => {
   const [blogToDelete, setBlogToDelete] = useState(null); // Track the blog to delete
 
 
-    const fetchBlogs = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_API_URI}/api/blogs/pending`
-        );
-        setPendingBlogs(response.data);
-      } catch (error) {
-        console.error('Error fetching blogs:', error);
-      }
-    };
-useEffect(() => {
+  const fetchBlogs = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND_API_URI}/api/blogs/pending`
+      );
+      setPendingBlogs(response.data);
+    } catch (error) {
+      console.error('Error fetching blogs:', error);
+    }
+  };
+  useEffect(() => {
     fetchBlogs();
   }, []);
 
@@ -38,8 +38,11 @@ useEffect(() => {
       author: blog.author,
       content: blog.content,
       isReviewed: blog.isReviewed || false,
+      images: blog.images || [], // Make sure images are set (empty array if not available)
     });
+    console.log(blog.images);
   };
+
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -68,7 +71,7 @@ useEffect(() => {
       setMessage('Error updating blog.');
     }
 
-    fetchBlogs();
+    fetchBlogs();;
   };
 
   const handleDelete = async () => {
@@ -92,62 +95,62 @@ useEffect(() => {
       <h1 className="text-2xl font-semibold mb-4">Pending Blogs</h1>
 
 
-      {message && <p className="mb-4 text-green-500">{message}</p>} <div className="grid grid-cols-3">
-      {pendingBlogs.length === 0 ? (
-        <p>No pending blogs found.</p>
-      ) : (
-        pendingBlogs.map((blog) => (
-          <div key={blog._id} className="shadow-lg border rounded-md mb-4">
-            <div className="w-full h-64 overflow-hidden">
-            <img
-          src={`${import.meta.env.VITE_BACKEND_API_URI}/uploads/blog_images/${blog.images[0]}`}
-          alt="Blog"
-          className="w-full h-full object-cover"
-        />
-            </div>
-            <div className="p-4">
-              <h2 className="font-semibold text-xl text-orange-500">{blog.title}</h2>
-              <p className="text-gray-600">
-                <span className="font-semibold">Author: </span>
-                {blog.author}
-              </p>
-              <p className="text-gray-600">
-                <span className="font-semibold">Last Updated: </span>
-                {new Date(blog.updatedAt).toLocaleDateString('en-CA')}
-              </p>
-              <p className="mt-2 text-gray-700">
-                <span className="font-semibold">Content: </span>
-                {`${blog.content.slice(0, 150)}...`}
-              </p>
-              <div className="flex justify-between mt-4">
-                <button
-                  onClick={() => handleEdit(blog)}
-                  className="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600"
-                >
-                  Review
-                </button>
-                <button
-                  onClick={() => {
-                    setBlogToDelete(blog); // Set blog to be deleted
-                    setShowDeleteModal(true);
-                  }}
-                  className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
-                >
-                  Delete
-                </button>
-
+      {message && <p className="mb-4 text-green-500">{message}</p>} <div className="grid grid-cols-3 gap-3">
+        {pendingBlogs.length === 0 ? (
+          <p>No pending blogs found.</p>
+        ) : (
+          pendingBlogs.map((blog) => (
+            <div key={blog._id} className="shadow-lg border rounded-md mb-4">
+              <div className="w-full h-64 overflow-hidden">
+                <img
+                  src={`${import.meta.env.VITE_BACKEND_API_URI}/uploads/blog_images/${blog.images[0]}`}
+                  alt="Blog"
+                  className="w-full h-full object-cover"
+                />
               </div>
+              <div className="p-4">
+                <h2 className="font-semibold text-xl text-orange-500">{blog.title}</h2>
+                <p className="text-gray-600">
+                  <span className="font-semibold">Author: </span>
+                  {blog.author}
+                </p>
+                <p className="text-gray-600">
+                  <span className="font-semibold">Last Updated: </span>
+                  {new Date(blog.updatedAt).toLocaleDateString('en-CA')}
+                </p>
+                <p className="mt-2 text-gray-700">
+                  <span className="font-semibold">Content: </span>
+                  {`${blog.content.slice(0, 150)}...`}
+                </p>
+                <div className="flex justify-between mt-4">
+                  <button
+                    onClick={() => handleEdit(blog)}
+                    className="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600"
+                  >
+                    Review
+                  </button>
+                  <button
+                    onClick={() => {
+                      setBlogToDelete(blog); // Set blog to be deleted
+                      setShowDeleteModal(true);
+                    }}
+                    className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+                  >
+                    Delete
+                  </button>
+
+                </div>
+              </div>
+
             </div>
 
-          </div>
-
-        ))
-      )}
+          ))
+        )}
       </div>
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed inset-0  bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-md shadow-md">
             <p className="mb-4">Are you sure you want to delete this blog?</p>
             <div className="flex justify-end gap-4">
@@ -170,11 +173,12 @@ useEffect(() => {
 
       {selectedBlog && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+          <div className="bg-white p-6 flex gap-10 rounded-lg shadow-lg w-full  md:w-1/2">
+          <div className="w-full">
             <h2 className="text-xl font-semibold mb-4">Edit Blog</h2>
 
             {/* Title Field */}
-            <div className="mb-4 ">
+            <div className="mb-4 w-full">
               <span className="flex justify-between w-full font-bold">
                 Title:
                 <button
@@ -230,65 +234,81 @@ useEffect(() => {
             </div>
 
             {/* Content Field */}
-            <div className="mb-4">
-              <span className="flex justify-between w-full font-bold">
-                Content:
+            <div className="">
+              <div className="mb-4">
+                <span className="flex justify-between w-full font-bold">
+                  Content:
+                  <button
+                    onClick={() =>
+                      setEditingField(editingField === 'content' ? null : 'content')
+                    }
+                    className="ml-2 text-gray-800"
+                  >
+                    {editingField === 'content' ? <X /> : <PencilLine />}
+                  </button>
+                </span>
+                {editingField === 'content' ? (
+                  <div className="relative mt-2">
+                    <textarea
+                      name="content"
+                      value={formData.content}
+                      onChange={handleInputChange}
+                      className="block h-72 w-full border border-gray-300 p-2 rounded-md"
+                    />
+                  </div>
+                ) : (
+                  <div className="max-h-72 overflow-auto mt-2">
+                    {formData.content}
+                  </div>
+                )}
+              </div>
+
+              {/* Reviewed Checkbox */}
+              <div className="flex items-center mb-4">
+                <input
+                  type="checkbox"
+                  name="isReviewed"
+                  checked={formData.isReviewed}
+                  onChange={handleInputChange}
+                  className="mr-2"
+                />
+                <span>Mark as Reviewed</span>
+              </div>
+
+              <div className="flex justify-end space-x-2">
                 <button
-                  onClick={() =>
-                    setEditingField(editingField === 'content' ? null : 'content')
-                  }
-                  className="ml-2 text-gray-800"
+                  onClick={handleUpdate}
+                  className="bg-blue-500 text-white px-4 py-2 rounded-md"
                 >
-                  {editingField === 'content' ? <X /> : <PencilLine />}
+                  Update
                 </button>
-              </span>
-              {editingField === 'content' ? (
-                <div className="relative mt-2">
-                  <textarea
-                    name="content"
-                    value={formData.content}
-                    onChange={handleInputChange}
-                    className="block h-72 w-full border border-gray-300 p-2 rounded-md"
-                  />
-                </div>
-              ) : (
-                <div className="max-h-72 overflow-auto mt-2">
-                  {formData.content}
-                </div>
-              )}
-            </div>
-
-            {/* Reviewed Checkbox */}
-            <div className="flex items-center mb-4">
-              <input
-                type="checkbox"
-                name="isReviewed"
-                checked={formData.isReviewed}
-                onChange={handleInputChange}
-                className="mr-2"
-              />
-              <span>Mark as Reviewed</span>
-            </div>
-
-            <div className="flex justify-end space-x-2">
-              <button
-                onClick={handleUpdate}
-                className="bg-blue-500 text-white px-4 py-2 rounded-md"
-              >
-                Update
-              </button>
-              <button
-                onClick={() => {
-                  setSelectedBlog(null);
-                  setEditingField(null);
-                }}
-                className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md"
-              >
-                Cancel
-              </button>
+                <button
+                  onClick={() => {
+                    setSelectedBlog(null);
+                    setEditingField(null);
+                  }}
+                  className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md"
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+          <div className="min-w-[33%] grid grid-cols-1 h-1/2 md:grid-cols-2  ">
+            {
+              formData.images && formData.images.length > 0 ? formData.images.map((image, index) => (
+                <img
+                  key={index}  // Use index or a unique identifier as the key
+                  src={`${import.meta.env.VITE_BACKEND_API_URI}/uploads/blog_images/${image}`}
+                  alt={`Image preview ${index}`}
+                  className="mt-4 w-24 h-24 object-cover rounded-md"
+                />
+              )) : "No images available"
+            }
+
+
+          </div>
+        </div></div>
       )}
     </div>
   );

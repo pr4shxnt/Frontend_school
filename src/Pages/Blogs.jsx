@@ -63,11 +63,11 @@ const Blogs = () => {
                 />
 
                 {/* Overlay with Red Background */}
-                <div className="absolute bg-opacity-10 inset-0 bg-gradient-to-t from-orange-500 to-orange-300 opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex flex-col justify-end items-center">
+                <div className="absolute bg-opacity-10 inset-0 bg-gradient-to-t from-orange-600 to-orange-300 opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex flex-col justify-end items-center">
                   {/* Sliding Text */}
                   <div className="transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 h-full pt-20 flex flex-col justify-center items-center p-6">
                     <h2 className="text-xl text-white font-bold ">{`${blog.title.slice(0,30)}....`}</h2>
-                    <p className="text-gray-200 text-sm">{blog.content.slice(0,30)}</p>
+                    <p className="text-gray-200 text-sm">{blog.content.slice(0,30)+`...`}</p>
                     <a
                       href={`/blogs/${blog._id}`}
                       className="  text-white px-4 py-2   "
