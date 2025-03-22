@@ -12,21 +12,19 @@ import Dashboard from "./Admin/Dashboard";
 import AdminHandling from "./Admin/Admin-Panel/AdminHandeling";
 import Gallery from "./Admin/AdminGallery";
 import GalleryContainer from "./Pages/GalleryContainer";
-import StaffMngmt from "./Admin/StaffList";
-import StaffList from "./Admin/StaffList";
 import StaffManagement from "./Admin/StaffList";
 import StaffsContainer from "./Pages/StaffsContainer";
-import Events from "./Admin/AdminEvents";
 import AdminEvents from "./Admin/AdminEvents";
 import AdminStudents from "./Admin/AdminStudents";
 import StudentCardAccess from "./Components/StudentCardAccess";
 import BlogCreator from "./Pages/BlogCreator";
-import ReviewedBlogs from "./Admin/reviewedBlogs";
 import PendingBlog from "./Admin/pendingBlogs";
 import Blogs from "./Pages/Blogs";
 import IndividualBlogs from "./Pages/IndividualBlogs";
 import About from "./Pages/About";
 import AdmissionInquiryForm from "./Components/AdmissionInquiryForm";
+import { EventsPage } from "./Components/Events";
+import ReviewedBlogs from "./Admin/reviewedBlogs";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -71,9 +69,14 @@ export default function App() {
             element: <About/>,
         },
         {
+          path: "events",
+          element: <EventsPage/>
+        },
+        {
           path: "admission/inquiry",
           element: <AdmissionInquiryForm/>
-        }
+        },
+
 
       ],
     },

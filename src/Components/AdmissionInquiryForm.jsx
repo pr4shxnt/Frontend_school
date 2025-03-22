@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { School, Send, Phone, Mail, MapPin, Globe } from 'lucide-react';
+import axios from 'axios';
 
 function AdmissionInquiryForm() {
   const [formData, setFormData] = useState({
@@ -14,22 +15,29 @@ function AdmissionInquiryForm() {
     message: ''
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({
-      studentName: '',
-      dateOfBirth: '',
-      gradeApplying: '',
-      parentName: '',
-      email: '',
-      phone: '',
-      address: '',
-      previousSchool: '',
-      message: ''
-    });
+
+
+    try {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URI}/api/admissionInquiry`, formData);
+        
+        setFormData({
+            studentName: '',
+            dateOfBirth: '',
+            gradeApplying: '',
+            parentName: '',
+            email: '',
+            phone: '',
+            address: '',
+            previousSchool: '',
+            message: ''
+          });
+    } catch (error) {
+        console.error('Error submitting inquiry:', error);
+    }
+    
+   
   };
 
   const handleChange = (e) => {
@@ -44,7 +52,7 @@ function AdmissionInquiryForm() {
     <div className="min-h-screen bg-gradient-to-b from-gray-300 to-gray-100">
       {/* Header */}
       <header className="bg-white shadow-md">
-      <header className=" shadow-sm">
+      <header className=" shadow-sm pt-20 md:pt-0">
         <div className=" mx-auto ">
         <div className="relative  rounded-xl shadow-md">
             <div className="absolute bg-black opacity-50 h-full w-full z-10">
@@ -57,11 +65,11 @@ function AdmissionInquiryForm() {
               />
               <div className="absolute z-20 top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]">
               <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex flex-col items-center justify-between">
-          <div className="flex  items-center space-x-3">
+          <div className="flex flex-col md:flex-row justify-center items-center space-x-3">
             <School className="w-16 h-16 text-blue-600" />
-            <h1 className="text-5xl font-bold text-center text-gray-100">Pranami Global School</h1>
+            <h1 className="text-3xl md:text-5xl font-bold text-center text-gray-100">Pranami Global School</h1>
           </div>
-          <div className="flex space-x-6 text-lg text-gray-200">
+          <div className="flex flex-col md:flex-row items-center space-x-6 md:text-lg text-gray-200">
             <div className="flex items-center">
               <Phone className="h-4 w-4 mr-2" />
               <span>+1 234 567 8900</span>
