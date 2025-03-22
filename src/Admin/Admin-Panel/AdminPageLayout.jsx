@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import AdminSidebar from './adminSidebar';
+import AdminSidebar from './AdminSidebar';
 import { Menu } from 'lucide-react';
 import {jwtDecode} from 'jwt-decode'; // Correct default import
 
