@@ -24,7 +24,7 @@ import IndividualBlogs from "./Pages/IndividualBlogs";
 import About from "./Pages/About";
 import AdmissionInquiryForm from "./Components/AdmissionInquiryForm";
 import { EventsPage } from "./Components/Events";
-import ReviewedBlogs from "./Admin/reviewedBlogs";
+import ReviewedBlogs from "./Admin/ReviewedBlogs";
 
 export default function App() {
   const router = createBrowserRouter([
