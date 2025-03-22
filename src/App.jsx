@@ -26,6 +26,7 @@ import PendingBlog from "./Admin/pendingBlogs";
 import Blogs from "./Pages/Blogs";
 import IndividualBlogs from "./Pages/IndividualBlogs";
 import About from "./Pages/About";
+import AdmissionInquiryForm from "./Components/AdmissionInquiryForm";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -68,6 +69,10 @@ export default function App() {
         {
             path: "about",
             element: <About/>,
+        },
+        {
+          path: "admission/inquiry",
+          element: <AdmissionInquiryForm/>
         }
 
       ],

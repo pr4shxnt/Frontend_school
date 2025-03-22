@@ -102,7 +102,7 @@ const Navbar = () => {
             </li>
             </NavLink>
 
-            <NavLink className="nav-link" to="/admission">
+            <NavLink className="nav-link" to="/admission/inquiry">
             <li className="cursor-pointer transition-all ease-in duration-300">
               Online Admission
             </li>

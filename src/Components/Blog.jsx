@@ -30,7 +30,7 @@ console.log(blogData);
 
 
   return (
-    <div className="mb-10">
+    <div className="mb-10 ">
 
       <div className="blog-container">
         {blog ? (
@@ -53,7 +53,7 @@ console.log(blogData);
 
               <p className="mt-2 text-md text-justify text-gray-300 leading-5 hidden md:block">{blog.content.slice(0,1490)+`...`} <NavLink className="text-orange-500 hover:underline" to={`/blogs/${blog._id}`}>Read More</NavLink> </p>
               <p className="subtitle_default text-justify text-xs text-gray-400 md:hidden">{blog.content.slice(0,300)+`...`} <NavLink className="text-orange-500 hover:underline" to={`/blogs/${blog._id}`}>Read More</NavLink> </p>
-              <p className="text-lg flex flex-col md:flex-row gap-3 justify-center w-full -4">
+              <p className="text-lg pb-10 flex flex-col md:flex-row gap-3 justify-center w-full -4">
                 <div className="md:absolute mt-4 md:mt-0 md:flex md:gap-3 bottom-2">
                 <div className='text-orange-500  '>Author:</div> {blog.author}</div>
               </p>
