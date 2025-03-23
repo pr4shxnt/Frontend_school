@@ -14,25 +14,50 @@ const AdminPageLayout = () => {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      setIsAuthenticated(false); // If no token, user is not authenticated
-      navigate('/admin/login'); // Redirect to login page if not authenticated
+
+      // If no token, user is not authenticated
+      setIsAuthenticated(false); 
+
+      // Redirect to login page if not authenticated
+      navigate('/admin/login'); 
     } else {
+
+
       try {
+
+        
         // Decode the token (assuming it's a JWT)
         const decodedToken = jwtDecode(token);
 
+
+
+
         // Check if the token has expired
         if (decodedToken.exp * 1000 < Date.now()) {
-          setIsAuthenticated(false); // If expired, log out the user
-          localStorage.removeItem('token'); // Optionally remove the expired token
-          navigate('/admin/login'); // Redirect to login page if token is expired
+
+          // If expired, log out the user
+          setIsAuthenticated(false); 
+
+          // Optionally remove the expired token
+          localStorage.removeItem('token'); 
+
+           // Redirect to login page if token is expired
+          navigate('/admin/login');
         } else {
-          setIsAuthenticated(true); // Set authentication status if token is valid
+
+           // Set authentication status if token is valid
+          setIsAuthenticated(true);
         }
       } catch (error) {
-        setIsAuthenticated(false); // If there's any error decoding the token, treat it as invalid
-        localStorage.removeItem('token'); // Optionally remove the invalid token
-        navigate('/admin/login'); // Redirect to login page if token is invalid
+
+        // If there's any error decoding the token, treat it as invalid
+        setIsAuthenticated(false); 
+
+         // Optionally remove the invalid token
+        localStorage.removeItem('token');
+
+        // Redirect to login page if token is invalid
+        navigate('/admin/login'); 
       }
     }
   }, [navigate]);
